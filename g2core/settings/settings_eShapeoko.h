@@ -154,15 +154,15 @@
 #define X_VELOCITY_MAX              5000                    // xvm  G0 max velocity in mm/min
 #define X_FEEDRATE_MAX              X_VELOCITY_MAX          // xfr  G1 max feed rate in mm/min
 #define X_TRAVEL_MIN                0                       // xtn  minimum travel for soft limits
-#define X_TRAVEL_MAX                390                     // xtm  travel between switches or crashes
+#define X_TRAVEL_MAX                280                     // xtm  travel between switches or crashes
 #define X_JERK_MAX                  JERK_MAX                // xjm  jerk * 1,000,000
 #define X_JERK_HIGH_SPEED           20000                   // xjh
 #define X_HOMING_INPUT              1                       // xhi  input used for homing or 0 to disable
 #define X_HOMING_DIRECTION          0                       // xhd  0=search moves negative, 1= search moves positive
 #define X_SEARCH_VELOCITY           1000                    // xsv  minus means move to minimum switch
 #define X_LATCH_VELOCITY            200                     // xlv  mm/min
-#define X_LATCH_BACKOFF             5                       // xlb  mm
-#define X_ZERO_BACKOFF              2                       // xzb  mm
+#define X_LATCH_BACKOFF             2                       // xlb  mm
+#define X_ZERO_BACKOFF              1                       // xzb  mm
 
 #define Y_AXIS_MODE                 AXIS_STANDARD
 #define Y_VELOCITY_MAX              5000
@@ -175,8 +175,8 @@
 #define Y_HOMING_DIRECTION          0
 #define Y_SEARCH_VELOCITY           1000
 #define Y_LATCH_VELOCITY            200
-#define Y_LATCH_BACKOFF             5
-#define Y_ZERO_BACKOFF              2
+#define Y_LATCH_BACKOFF             2
+#define Y_ZERO_BACKOFF              1
 
 #define Z_AXIS_MODE                 AXIS_STANDARD
 #define Z_VELOCITY_MAX              500
@@ -189,8 +189,8 @@
 #define Z_HOMING_DIRECTION          1
 #define Z_SEARCH_VELOCITY           200
 #define Z_LATCH_VELOCITY            100
-#define Z_LATCH_BACKOFF             5
-#define Z_ZERO_BACKOFF              2
+#define Z_LATCH_BACKOFF             2
+#define Z_ZERO_BACKOFF              1
 
 #define A_AXIS_MODE                 AXIS_STANDARD
 #define A_VELOCITY_MAX              10
@@ -314,7 +314,7 @@
 
 // *** DEFAULT COORDINATE SYSTEM OFFSETS ***
 
-#define G54_X_OFFSET 195    // G54 work offset
-#define G54_Y_OFFSET 295
+#define G54_X_OFFSET 135    // G54 work offset
+#define G54_Y_OFFSET 290
 #define G54_Z_OFFSET 0
 
