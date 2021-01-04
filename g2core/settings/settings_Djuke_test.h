@@ -68,7 +68,7 @@
 // Communications and reporting settings
 
 #define COMM_MODE                   TEXT_MODE               // one of: TEXT_MODE, JSON_MODE, AUTO_MODE
-#define XIO_ENABLE_FLOW_CONTROL     FLOW_CONTROL_OFF        // FLOW_CONTROL_OFF, FLOW_CONTROL_RTS
+#define XIO_ENABLE_FLOW_CONTROL     FLOW_CONTROL_RTS        // FLOW_CONTROL_OFF, FLOW_CONTROL_RTS
 
 #define TEXT_VERBOSITY              TV_VERBOSE              // one of: TV_SILENT, TV_VERBOSE
 #define JSON_VERBOSITY              JV_MESSAGES             // one of: JV_SILENT, JV_FOOTER, JV_CONFIGS, JV_MESSAGES, JV_LINENUM, JV_VERBOSE
@@ -130,7 +130,7 @@
 #define M4_POWER_MODE               MOTOR_POWER_MODE
 #define M4_POWER_LEVEL              MOTOR_POWER_LEVEL
 
-#define M5_MOTOR_MAP                AXIS_A_EXTERNAL
+#define M5_MOTOR_MAP                AXIS_B_EXTERNAL
 #define M5_STEP_ANGLE               1.8
 #define M5_TRAVEL_PER_REV           1.00
 #define M5_MICROSTEPS               8
@@ -138,7 +138,7 @@
 #define M5_POWER_MODE               MOTOR_POWER_MODE
 #define M5_POWER_LEVEL              MOTOR_POWER_LEVEL
 
-#define M6_MOTOR_MAP                AXIS_A_EXTERNAL
+#define M6_MOTOR_MAP                AXIS_C_EXTERNAL
 #define M6_STEP_ANGLE               1.8
 #define M6_TRAVEL_PER_REV           1.00
 #define M6_MICROSTEPS               8
@@ -272,12 +272,12 @@
 #define DI4_ACTION                  INPUT_ACTION_FAST_STOP
 #define DI4_FUNCTION                INPUT_FUNCTION_LIMIT
 
-// Zmin configured as probe input
-#define DI5_MODE                    NORMALLY_OPEN
-#define DI5_ACTION                  INPUT_ACTION_NONE
-#define DI5_FUNCTION                INPUT_FUNCTION_PROBE
+// Zmin
+#define DI5_MODE                    NORMALLY_CLOSED
+#define DI5_ACTION                  INPUT_ACTION_FAST_STOP
+#define DI5_FUNCTION                INPUT_FUNCTION_LIMIT
 
-// Zmax (switch at Zmin can be wired in series)
+// Zmax
 #define DI6_MODE                    NORMALLY_CLOSED
 #define DI6_ACTION                  INPUT_ACTION_FAST_STOP
 #define DI6_FUNCTION                INPUT_FUNCTION_LIMIT
