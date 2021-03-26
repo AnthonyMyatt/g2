@@ -39,7 +39,7 @@
 #define JUNCTION_INTEGRATION_TIME   0.75                    // cornering - between 0.10 and 2.00 (higher is faster)
 #define CHORDAL_TOLERANCE           0.01                    // chordal tolerance for arcs (in mm)
 
-#define SOFT_LIMIT_ENABLE           0                       // 0=off, 1=on
+#define SOFT_LIMIT_ENABLE           1                       // 0=off, 1=on
 #define HARD_LIMIT_ENABLE           1                       // 0=off, 1=on
 #define SAFETY_INTERLOCK_ENABLE     1                       // 0=off, 1=on
 
@@ -102,7 +102,7 @@
 #define M1_STEP_ANGLE               1.8                     // 1sa
 #define M1_TRAVEL_PER_REV           80.00                    // 1tr
 #define M1_MICROSTEPS               16                       // 1mi  1,2,4,8,16,32
-#define M1_POLARITY                 1                       // 1po  0=normal, 1=reversed
+#define M1_POLARITY                 0                       // 1po  0=normal, 1=reversed
 #define M1_POWER_MODE               MOTOR_POWER_MODE        // 1pm  TRUE=low power idle enabled
 #define M1_POWER_LEVEL              MOTOR_POWER_LEVEL		// 1pl	Irrelevant for external drivers
 
@@ -148,16 +148,16 @@
 
 // *** axis settings **********************************************************************************
 
-#define JERK_MAX                    30000
+#define JERK_MAX                    4320			// :6^3 = 20 m/s3
 
 #define X_AXIS_MODE                 AXIS_STANDARD           // xam  see canonical_machine.h cmAxisMode for valid values
-#define X_VELOCITY_MAX              120000                  // xvm  G0 max velocity in mm/min
+#define X_VELOCITY_MAX              60000                  // xvm  G0 max velocity in mm/min
 #define X_FEEDRATE_MAX              X_VELOCITY_MAX          // xfr  G1 max feed rate in mm/min
 #define X_TRAVEL_MIN                0                       // xtn  minimum travel for soft limits
-#define X_TRAVEL_MAX                400                     // xtm  travel between switches or crashes
+#define X_TRAVEL_MAX                350                     // xtm  travel between switches or crashes
 #define X_JERK_MAX                  JERK_MAX                // xjm  jerk * 1,000,000
 #define X_JERK_HIGH_SPEED           X_JERK_MAX              // xjh
-#define X_HOMING_INPUT              0                       // xhi  input used for homing or 0 to disable
+#define X_HOMING_INPUT              1                       // xhi  input used for homing or 0 to disable
 #define X_HOMING_DIRECTION          0                       // xhd  0=search moves negative, 1= search moves positive
 #define X_SEARCH_VELOCITY           2000                     // xsv  minus means move to minimum switch
 #define X_LATCH_VELOCITY            200                      // xlv  mm/min
@@ -165,7 +165,7 @@
 #define X_ZERO_BACKOFF              1                       // xzb  mm
 
 #define Y_AXIS_MODE                 AXIS_STANDARD
-#define Y_VELOCITY_MAX              120000
+#define Y_VELOCITY_MAX              60000
 #define Y_FEEDRATE_MAX              Y_VELOCITY_MAX
 #define Y_TRAVEL_MIN                0
 #define Y_TRAVEL_MAX                400
