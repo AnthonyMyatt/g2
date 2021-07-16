@@ -95,7 +95,7 @@
 // *** motor settings ************************************************************************************
 
 #define MOTOR_POWER_MODE            MOTOR_POWERED_IN_CYCLE  // default motor power mode (see cmMotorPowerMode in stepper.h)
-#define MOTOR_POWER_TIMEOUT         2.00                    // motor power timeout in seconds
+#define MOTOR_POWER_TIMEOUT         86400.00                // very long motor power timeout in seconds as pick-and-place desires manual enable/disable
 #define MOTOR_POWER_LEVEL           0.5	                    // default motor power level 0.00 - 1.00
 
 #define M1_MOTOR_MAP                AXIS_X_EXTERNAL         // 1ma
@@ -110,7 +110,7 @@
 #define M2_STEP_ANGLE               1.8
 #define M2_TRAVEL_PER_REV           80.00
 #define M2_MICROSTEPS               16
-#define M2_POLARITY                 1
+#define M2_POLARITY                 0
 #define M2_POWER_MODE               MOTOR_POWER_MODE
 #define M2_POWER_LEVEL              MOTOR_POWER_LEVEL
 
@@ -118,13 +118,13 @@
 #define M3_STEP_ANGLE               1.8
 #define M3_TRAVEL_PER_REV           80.0
 #define M3_MICROSTEPS               16
-#define M3_POLARITY                 0
+#define M3_POLARITY                 1
 #define M3_POWER_MODE               MOTOR_POWER_MODE
 #define M3_POWER_LEVEL              MOTOR_POWER_LEVEL
 
 #define M4_MOTOR_MAP                AXIS_Z_EXTERNAL
 #define M4_STEP_ANGLE               1.8
-#define M4_TRAVEL_PER_REV           1.00
+#define M4_TRAVEL_PER_REV           360.00
 #define M4_MICROSTEPS               16
 #define M4_POLARITY                 0
 #define M4_POWER_MODE               MOTOR_POWER_MODE
@@ -132,26 +132,26 @@
 
 #define M5_MOTOR_MAP                AXIS_A_EXTERNAL
 #define M5_STEP_ANGLE               1.8
-#define M5_TRAVEL_PER_REV           1.00
-#define M5_MICROSTEPS               16
+#define M5_TRAVEL_PER_REV           360.00
+#define M5_MICROSTEPS               8
 #define M5_POLARITY                 0
 #define M5_POWER_MODE               MOTOR_POWER_MODE
 #define M5_POWER_LEVEL              MOTOR_POWER_LEVEL
 
 #define M6_MOTOR_MAP                AXIS_B_EXTERNAL
 #define M6_STEP_ANGLE               1.8
-#define M6_TRAVEL_PER_REV           1.00
-#define M6_MICROSTEPS               16
+#define M6_TRAVEL_PER_REV           360.00
+#define M6_MICROSTEPS               8
 #define M6_POLARITY                 0
 #define M6_POWER_MODE               MOTOR_POWER_MODE
 #define M6_POWER_LEVEL              MOTOR_POWER_LEVEL
 
 // *** axis settings **********************************************************************************
 
-#define JERK_MAX                    4320			// :6^3 = 20 m/s3
+#define JERK_MAX                    2160			// 10 m/s3 * 60^3 : 1000
 
 #define X_AXIS_MODE                 AXIS_STANDARD           // xam  see canonical_machine.h cmAxisMode for valid values
-#define X_VELOCITY_MAX              60000                  // xvm  G0 max velocity in mm/min
+#define X_VELOCITY_MAX              30000                  // xvm  G0 max velocity in mm/min
 #define X_FEEDRATE_MAX              X_VELOCITY_MAX          // xfr  G1 max feed rate in mm/min
 #define X_TRAVEL_MIN                0                       // xtn  minimum travel for soft limits
 #define X_TRAVEL_MAX                350                     // xtm  travel between switches or crashes
@@ -165,7 +165,7 @@
 #define X_ZERO_BACKOFF              1                       // xzb  mm
 
 #define Y_AXIS_MODE                 AXIS_STANDARD
-#define Y_VELOCITY_MAX              60000
+#define Y_VELOCITY_MAX              30000
 #define Y_FEEDRATE_MAX              Y_VELOCITY_MAX
 #define Y_TRAVEL_MIN                0
 #define Y_TRAVEL_MAX                400
@@ -179,7 +179,7 @@
 #define Y_ZERO_BACKOFF              1
 
 #define Z_AXIS_MODE                 AXIS_STANDARD
-#define Z_VELOCITY_MAX              60
+#define Z_VELOCITY_MAX              18000
 #define Z_FEEDRATE_MAX              Z_VELOCITY_MAX
 #define Z_TRAVEL_MAX                -1
 #define Z_TRAVEL_MIN                -1
@@ -193,7 +193,7 @@
 #define Z_ZERO_BACKOFF              1
 
 #define A_AXIS_MODE                 AXIS_STANDARD
-#define A_VELOCITY_MAX              60
+#define A_VELOCITY_MAX              18000
 #define A_FEEDRATE_MAX              A_VELOCITY_MAX
 #define A_TRAVEL_MAX                -1
 #define A_TRAVEL_MIN                -1
@@ -201,13 +201,13 @@
 #define A_JERK_HIGH_SPEED           JERK_MAX
 #define A_HOMING_INPUT              0
 #define A_HOMING_DIRECTION          0
-#define A_SEARCH_VELOCITY           5
+#define A_SEARCH_VELOCITY           3600
 #define A_LATCH_VELOCITY            2
 #define A_LATCH_BACKOFF             2
 #define A_ZERO_BACKOFF              1
 
 #define B_AXIS_MODE                 AXIS_STANDARD
-#define B_VELOCITY_MAX              60
+#define B_VELOCITY_MAX              18000
 #define B_FEEDRATE_MAX              B_VELOCITY_MAX
 #define B_TRAVEL_MAX                -1
 #define B_TRAVEL_MIN                -1
@@ -215,13 +215,13 @@
 #define B_JERK_HIGH_SPEED           JERK_MAX
 #define B_HOMING_INPUT              0
 #define B_HOMING_DIRECTION          0
-#define B_SEARCH_VELOCITY           5
+#define B_SEARCH_VELOCITY           3600
 #define B_LATCH_VELOCITY            2
 #define B_LATCH_BACKOFF             2
 #define B_ZERO_BACKOFF              1
 
 #define C_AXIS_MODE                 AXIS_STANDARD
-#define C_VELOCITY_MAX              60
+#define C_VELOCITY_MAX              3600
 #define C_FEEDRATE_MAX              C_VELOCITY_MAX
 #define C_TRAVEL_MAX                -1
 #define C_TRAVEL_MIN                -1
@@ -229,7 +229,7 @@
 #define C_JERK_HIGH_SPEED           JERK_MAX
 #define C_HOMING_INPUT              0
 #define C_HOMING_DIRECTION          0
-#define C_SEARCH_VELOCITY           5
+#define C_SEARCH_VELOCITY           3600
 #define C_LATCH_VELOCITY            2
 #define C_LATCH_BACKOFF             2
 #define C_ZERO_BACKOFF              1
@@ -317,4 +317,3 @@
 #define G54_X_OFFSET 0    // G54 work offset
 #define G54_Y_OFFSET 0
 #define G54_Z_OFFSET 0
-
