@@ -133,7 +133,7 @@
 #define M5_MOTOR_MAP                AXIS_A_EXTERNAL
 #define M5_STEP_ANGLE               1.8
 #define M5_TRAVEL_PER_REV           360.00
-#define M5_MICROSTEPS               8
+#define M5_MICROSTEPS               16
 #define M5_POLARITY                 0
 #define M5_POWER_MODE               MOTOR_POWER_MODE
 #define M5_POWER_LEVEL              MOTOR_POWER_LEVEL
@@ -141,21 +141,22 @@
 #define M6_MOTOR_MAP                AXIS_B_EXTERNAL
 #define M6_STEP_ANGLE               1.8
 #define M6_TRAVEL_PER_REV           360.00
-#define M6_MICROSTEPS               8
+#define M6_MICROSTEPS               16
 #define M6_POLARITY                 0
 #define M6_POWER_MODE               MOTOR_POWER_MODE
 #define M6_POWER_LEVEL              MOTOR_POWER_LEVEL
 
 // *** axis settings **********************************************************************************
 
-#define JERK_MAX                    2160			// 10 m/s3 * 60^3 : 1000
+#define JERK_LINEAR_MAX             2160			        // 10 m/s3 * 60^3 : 1000
+#define JERK_ROTATION_MAX           8640			        // 40 deg/s3 * 60^3 : 1000
 
 #define X_AXIS_MODE                 AXIS_STANDARD           // xam  see canonical_machine.h cmAxisMode for valid values
-#define X_VELOCITY_MAX              30000                  // xvm  G0 max velocity in mm/min
+#define X_VELOCITY_MAX              30000                   // xvm  G0 max velocity in mm/min
 #define X_FEEDRATE_MAX              X_VELOCITY_MAX          // xfr  G1 max feed rate in mm/min
 #define X_TRAVEL_MIN                0                       // xtn  minimum travel for soft limits
 #define X_TRAVEL_MAX                350                     // xtm  travel between switches or crashes
-#define X_JERK_MAX                  JERK_MAX                // xjm  jerk * 1,000,000
+#define X_JERK_MAX                  JERK_LINEAR_MAX                // xjm  jerk * 1,000,000
 #define X_JERK_HIGH_SPEED           X_JERK_MAX              // xjh
 #define X_HOMING_INPUT              1                       // xhi  input used for homing or 0 to disable
 #define X_HOMING_DIRECTION          0                       // xhd  0=search moves negative, 1= search moves positive
@@ -169,7 +170,7 @@
 #define Y_FEEDRATE_MAX              Y_VELOCITY_MAX
 #define Y_TRAVEL_MIN                0
 #define Y_TRAVEL_MAX                400
-#define Y_JERK_MAX                  JERK_MAX
+#define Y_JERK_MAX                  JERK_LINEAR_MAX
 #define Y_JERK_HIGH_SPEED           Y_JERK_MAX
 #define Y_HOMING_INPUT              3
 #define Y_HOMING_DIRECTION          0
@@ -179,26 +180,26 @@
 #define Y_ZERO_BACKOFF              1
 
 #define Z_AXIS_MODE                 AXIS_STANDARD
-#define Z_VELOCITY_MAX              18000
+#define Z_VELOCITY_MAX              36000
 #define Z_FEEDRATE_MAX              Z_VELOCITY_MAX
-#define Z_TRAVEL_MAX                -1
-#define Z_TRAVEL_MIN                -1
-#define Z_JERK_MAX                  JERK_MAX
-#define Z_JERK_HIGH_SPEED           JERK_MAX
-#define Z_HOMING_INPUT              0
-#define Z_HOMING_DIRECTION          1
-#define Z_SEARCH_VELOCITY           200
-#define Z_LATCH_VELOCITY            100
-#define Z_LATCH_BACKOFF             2
+#define Z_TRAVEL_MAX                -30
+#define Z_TRAVEL_MIN                +30
+#define Z_JERK_MAX                  JERK_ROTATION_MAX
+#define Z_JERK_HIGH_SPEED           Z_JERK_MAX
+#define Z_HOMING_INPUT              5
+#define Z_HOMING_DIRECTION          0
+#define Z_SEARCH_VELOCITY           500
+#define Z_LATCH_VELOCITY            200
+#define Z_LATCH_BACKOFF             5
 #define Z_ZERO_BACKOFF              1
 
 #define A_AXIS_MODE                 AXIS_STANDARD
-#define A_VELOCITY_MAX              18000
+#define A_VELOCITY_MAX              36000
 #define A_FEEDRATE_MAX              A_VELOCITY_MAX
 #define A_TRAVEL_MAX                -1
 #define A_TRAVEL_MIN                -1
-#define A_JERK_MAX                  JERK_MAX
-#define A_JERK_HIGH_SPEED           JERK_MAX
+#define A_JERK_MAX                  JERK_ROTATION_MAX
+#define A_JERK_HIGH_SPEED           A_JERK_MAX
 #define A_HOMING_INPUT              0
 #define A_HOMING_DIRECTION          0
 #define A_SEARCH_VELOCITY           3600
@@ -207,12 +208,12 @@
 #define A_ZERO_BACKOFF              1
 
 #define B_AXIS_MODE                 AXIS_STANDARD
-#define B_VELOCITY_MAX              18000
+#define B_VELOCITY_MAX              36000
 #define B_FEEDRATE_MAX              B_VELOCITY_MAX
 #define B_TRAVEL_MAX                -1
 #define B_TRAVEL_MIN                -1
-#define B_JERK_MAX                  JERK_MAX
-#define B_JERK_HIGH_SPEED           JERK_MAX
+#define B_JERK_MAX                  JERK_ROTATION_MAX
+#define B_JERK_HIGH_SPEED           B_JERK_MAX
 #define B_HOMING_INPUT              0
 #define B_HOMING_DIRECTION          0
 #define B_SEARCH_VELOCITY           3600
@@ -225,8 +226,8 @@
 #define C_FEEDRATE_MAX              C_VELOCITY_MAX
 #define C_TRAVEL_MAX                -1
 #define C_TRAVEL_MIN                -1
-#define C_JERK_MAX                  JERK_MAX
-#define C_JERK_HIGH_SPEED           JERK_MAX
+#define C_JERK_MAX                  JERK_ROTATION_MAX
+#define C_JERK_HIGH_SPEED           C_JERK_MAX
 #define C_HOMING_INPUT              0
 #define C_HOMING_DIRECTION          0
 #define C_SEARCH_VELOCITY           3600
@@ -274,13 +275,13 @@
 
 // Zmin
 #define DI5_MODE                    NORMALLY_CLOSED
-#define DI5_ACTION                  INPUT_ACTION_FAST_STOP
-#define DI5_FUNCTION                INPUT_FUNCTION_LIMIT
+#define DI5_ACTION                  INPUT_ACTION_NONE
+#define DI5_FUNCTION                INPUT_FUNCTION_PROBE
 
 // Zmax
 #define DI6_MODE                    NORMALLY_CLOSED
-#define DI6_ACTION                  INPUT_ACTION_FAST_STOP
-#define DI6_FUNCTION                INPUT_FUNCTION_LIMIT
+#define DI6_ACTION                  INPUT_ACTION_NONE
+#define DI6_FUNCTION                INPUT_FUNCTION_NONE
 
 // Amin
 #define DI7_MODE                    NORMALLY_CLOSED
