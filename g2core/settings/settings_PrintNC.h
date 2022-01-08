@@ -144,14 +144,14 @@
 #define Y_LATCH_BACKOFF             4.0                      // {ylb:  mm
 #define Y_ZERO_BACKOFF              2.0                      // {yzb:  mm
 
-// Y Axis Homing
-#define Z_TRAVEL_MIN                0.0                      // {ytn:  minimum travel for soft limits
-#define Z_TRAVEL_MAX                20.0                    // {ytm:  travel between switches or crashes
-#define Z_JERK_HIGH_SPEED           20000.0                  // {yjh:
-#define Z_HOMING_INPUT              1                        // {yhi:  input used for homing or 0 to disable
-#define Z_HOMING_DIRECTION          1                        // {yhd:  0=search moves negative, 1= search moves positive
-#define Z_SEARCH_VELOCITY           180.0                   // {ysv:  minus means move to minimum switch
-#define Z_LATCH_VELOCITY            30.0                    // {ylv:  mm/min
-#define Z_LATCH_BACKOFF             4.0                      // {ylb:  mm
-#define Z_ZERO_BACKOFF              2.0                      // {yzb:  mm
+// Z Axis Homing
+#define Z_TRAVEL_MIN                0.0                      // {ztn:  minimum travel for soft limits
+#define Z_TRAVEL_MAX                20.0                    // {ztm:  travel between switches or crashes
+#define Z_JERK_HIGH_SPEED           20000.0                  // {zjh:
+#define Z_HOMING_INPUT              1                        // {zhi:  input used for homing or 0 to disable
+#define Z_HOMING_DIRECTION          1                        // {zhd:  0=search moves negative, 1= search moves positive
+#define Z_SEARCH_VELOCITY           180.0                   // {zsv:  minus means move to minimum switch
+#define Z_LATCH_VELOCITY            30.0                    // {zlv:  mm/min
+#define Z_LATCH_BACKOFF             4.0                      // {zlb:  mm
+#define Z_ZERO_BACKOFF              2.0                      // {zzb:  mm
 
